@@ -6,6 +6,7 @@ audio.deep_buffer.media=true
 audio.offload.buffer.size.kb=256
 audio.offload.gapless.enabled=true
 audio.offload.video=true
+audio.offload.min.duration.secs=30
 persist.vendor.audio.ambisonic.auto.profile=false
 persist.vendor.audio.ambisonic.capture=false
 persist.vendor.audio.apptype.multirec.enabled=false
