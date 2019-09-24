@@ -36,6 +36,9 @@ ro.lmk.lowmem_min_oom_score=900
 ro.lmk.psi_partial_stall_ms=200
 ro.lmk.swap_free_low_percentage=7
 
+# Media
+media.stagefright.thumbnail.prefer_hw_codecs=true
+
 # Netflix
 ro.netflix.bsp_rev=Q8250-19134-1
 
