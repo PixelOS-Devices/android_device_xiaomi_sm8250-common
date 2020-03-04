@@ -99,6 +99,7 @@
             <Limit name="concurrent-instances" max="4" />
             <Limit name="performance-point-4096x2304" value="30" />
             <Limit name="performance-point-3840x2160" value="60" />
+            <Limit name="performance-point-1920x1080" value="60" />
         </MediaCodec>
         <MediaCodec name="c2.qti.hevc.decoder" type="video/hevc" >
             <Alias name="OMX.qcom.video.decoder.hevc" />
@@ -130,6 +131,7 @@
             <Limit name="concurrent-instances" max="4" />
             <Limit name="performance-point-4096x2304" value="30" />
             <Limit name="performance-point-3840x2160" value="60" />
+            <Limit name="performance-point-1920x1080" value="60" />
         </MediaCodec>
         <MediaCodec name="c2.qti.vp8.decoder" type="video/x-vnd.on2.vp8" >
             <Alias name="OMX.qcom.video.decoder.vp8" />
@@ -177,6 +179,7 @@
             <Limit name="concurrent-instances" max="4" />
             <Limit name="performance-point-4096x2304" value="30" />
             <Limit name="performance-point-3840x2160" value="60" />
+            <Limit name="performance-point-1920x1080" value="60" />
         </MediaCodec>
         <!-- TODO: parameters are copied from kona omx -->
         <MediaCodec name="c2.qti.mpeg2.decoder" type="video/mpeg2" >
