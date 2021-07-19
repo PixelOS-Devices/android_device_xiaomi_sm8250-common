@@ -30,6 +30,7 @@ persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 
 # LMK
+ro.lmk.filecache_min_kb=153600
 ro.lmk.kill_timeout_ms=200
 ro.lmk.lowmem_min_oom_score=900
 ro.lmk.psi_partial_stall_ms=200
