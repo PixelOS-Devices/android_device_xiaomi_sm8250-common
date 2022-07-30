@@ -43,5 +43,8 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 # Netflix
 ro.netflix.bsp_rev=Q8250-19134-1
 
+# Thermal
+vendor.sys.thermal.data.path=/data/vendor/thermal/
+
 # Zygote
 persist.device_config.runtime_native.usap_pool_enabled=true
