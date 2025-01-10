@@ -218,6 +218,10 @@
             <Limit name="blocks-per-second" min="64" max="2073600" />
             <Limit name="bitrate" range="1-120000000" />
             <Limit name="frame-rate" range="1-480" />
+            <Tuning name="vq-target-bpp-1080p" value="3.80" />
+            <Tuning name="vq-target-bpp-720p" value="4.50" />
+            <Tuning name="vq-target-bpp-540p" value="5.30" />
+            <Tuning name="vq-target-bpp-480p" value="6.00" />
             <Limit name="performance-point-4096x2304" value="30" />
             <Limit name="performance-point-3840x2160" value="60" />
             <Limit name="performance-point-1920x1080" value="240" />
@@ -243,6 +247,10 @@
             <Limit name="blocks-per-second" min="64" max="2073600" />
             <Limit name="bitrate" range="1-120000000" />
             <Limit name="frame-rate" range="1-480" />
+            <Tuning name="vq-target-bpp-1080p" value="3.80" />
+            <Tuning name="vq-target-bpp-720p" value="4.50" />
+            <Tuning name="vq-target-bpp-540p" value="5.30" />
+            <Tuning name="vq-target-bpp-480p" value="6.00" />
             <Limit name="concurrent-instances" max="16" />
             <Limit name="performance-point-4096x2304" value="30" />
             <Limit name="performance-point-3840x2160" value="60" />
