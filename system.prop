@@ -29,6 +29,12 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 
+# LMK
+ro.lmk.kill_timeout_ms=200
+ro.lmk.lowmem_min_oom_score=900
+ro.lmk.psi_partial_stall_ms=200
+ro.lmk.swap_free_low_percentage=7
+
 # Netflix
 ro.netflix.bsp_rev=Q8250-19134-1
 
