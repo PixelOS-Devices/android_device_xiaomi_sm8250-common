@@ -36,6 +36,9 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('IGNORED_IRQ=27,23,38$', 'IGNORED_IRQ=27,23,38,115,332'),
     'vendor/lib64/libdpps.so': blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+    'vendor/etc/seccomp_policy/imsrtp.policy': blob_fixup()
+        .regex_replace('socket: 1\n', '')
+        .regex_replace('\nsigreturn: 1', ''),
 }  # fmt: skip
 
 
