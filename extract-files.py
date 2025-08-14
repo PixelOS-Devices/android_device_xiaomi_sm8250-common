@@ -39,6 +39,11 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/seccomp_policy/imsrtp.policy': blob_fixup()
         .regex_replace('socket: 1\n', '')
         .regex_replace('\nsigreturn: 1', ''),
+    'vendor/etc/seccomp_policy/codec2.vendor.base-arm.policy': blob_fixup()
+        .regex_replace('futex: 1\ngetpid: 1', 'getpid: 1'),
+    'vendor/etc/seccomp_policy/codec2.vendor.ext-arm.policy': blob_fixup()
+        .regex_replace('_llseek: 1\n', '')
+        .regex_replace('getdents64: 1\n', ''),
 }  # fmt: skip
 
 
