@@ -36,6 +36,29 @@ function configure_read_ahead_kb_values() {
     done
 }
 
+function configure_disk_parameters() {
+    # Set Disk parameters for UFS partitions (sda to sdf)
+    for dev in /sys/block/sd[a-f]; do
+        if [ -d "$dev" ]; then
+            echo mq-deadline > $dev/queue/scheduler
+            echo 128 > $dev/queue/read_ahead_kb
+            echo 128 > $dev/queue/nr_requests
+            echo 0 > $dev/queue/iostats
+            echo 2 > $dev/queue/rq_affinity
+            echo 0 > $dev/queue/add_random
+            if [ -d "$dev/queue/iosched" ]; then
+                echo 8 > $dev/queue/iosched/async_depth
+                echo 4 > $dev/queue/iosched/fifo_batch
+                echo 0 > $dev/queue/iosched/front_merges
+                echo 1000 > $dev/queue/iosched/prio_aging_expire
+                echo 150 > $dev/queue/iosched/read_expire
+                echo 3000 > $dev/queue/iosched/write_expire
+                echo 2 > $dev/queue/iosched/writes_starved
+            fi
+        fi
+    done
+}
+
 function configure_memory_parameters() {
 # Set swappiness to 100 for all targets
 echo 100 > /proc/sys/vm/swappiness
@@ -225,6 +248,7 @@ done
 setprop vendor.dcvs.prop 1
 echo N > /sys/module/lpm_levels/parameters/sleep_disabled
 configure_memory_parameters
+configure_disk_parameters
 
 # Post-setup services
 setprop vendor.post_boot.parsed 1
