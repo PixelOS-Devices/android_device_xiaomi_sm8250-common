@@ -26,6 +26,7 @@ import android.util.Log;
 import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.display.ColorService;
 import org.lineageos.settings.display.DisplayUtils;
+import org.lineageos.settings.vpp.VppUtils;
 import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 
@@ -40,6 +41,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
         ThermalUtils.startService(context);
         ColorService.startService(context);
+        VppUtils.startService(context);
 
         // DC Dimming
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
