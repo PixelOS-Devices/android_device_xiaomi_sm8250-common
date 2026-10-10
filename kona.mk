@@ -326,7 +326,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom.vendor_ramdisk
 
 PRODUCT_PACKAGES += \
-    init.class_main.sh \
     init.mdm.sh \
     init.mi.btmac.sh \
     init.panel_info.sh \
