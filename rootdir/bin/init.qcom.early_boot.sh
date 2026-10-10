@@ -46,17 +46,6 @@ else
     soc_hwver=`cat /sys/devices/system/soc/soc0/platform_version` 2> /dev/null
 fi
 
-if [ -f /sys/class/drm/card0-DSI-1/modes ]; then
-    echo "detect" > /sys/class/drm/card0-DSI-1/status
-    mode_file=/sys/class/drm/card0-DSI-1/modes
-    while read line; do
-        fb_width=${line%%x*};
-        break;
-    done < $mode_file
-elif [ -f /sys/class/graphics/fb0/virtual_size ]; then
-    res=`cat /sys/class/graphics/fb0/virtual_size` 2> /dev/null
-    fb_width=${res%,*}
-fi
 
 log -t BOOT -p i "MSM target '$1', SoC '$soc_hwplatform', HwID '$soc_hwid', SoC ver '$soc_hwver'"
 
@@ -68,33 +57,7 @@ else
     log -t DRM_BOOT -p w "file: '$vbfile' or perms doesn't exist"
 fi
 
-function set_density_by_fb() {
-    #put default density based on width
-    if [ -z $fb_width ]; then
-        setprop vendor.display.lcd_density 320
-    else
-        if [ $fb_width -ge 1600 ]; then
-           setprop vendor.display.lcd_density 640
-        elif [ $fb_width -ge 1440 ]; then
-           setprop vendor.display.lcd_density 560
-        elif [ $fb_width -ge 1080 ]; then
-           setprop vendor.display.lcd_density 480
-        elif [ $fb_width -ge 720 ]; then
-           setprop vendor.display.lcd_density 320 #for 720X1280 resolution
-        elif [ $fb_width -ge 480 ]; then
-            setprop vendor.display.lcd_density 240 #for 480X854 QRD resolution
-        else
-            setprop vendor.display.lcd_density 160
-        fi
-    fi
-}
-
 setprop vendor.media.target_variant "_kona"
-if [ $fb_width -le 1600 ]; then
-    setprop vendor.display.lcd_density 560
-else
-    setprop vendor.display.lcd_density 640
-fi
 
 baseband=`getprop ro.baseband`
 #enable atfwd daemon all targets except sda, apq, qcs
@@ -104,12 +67,6 @@ case "$baseband" in
     *)
         setprop persist.vendor.radio.atfwd.start true;;
 esac
-
-#set default lcd density
-#Since lcd density has read only
-#property, it will not overwrite previous set
-#property if any target is setting forcefully.
-set_density_by_fb
 
 # Setup display nodes & permissions
 # HDMI can be fb1 or fb2
