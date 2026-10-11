@@ -27,10 +27,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 function configure_read_ahead_kb_values() {
-    echo 512 > /sys/block/mmcblk0/bdi/read_ahead_kb
-    echo 512 > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
-
-    dmpts=$(ls /sys/block/*/queue/read_ahead_kb | grep -e dm -e mmc)
+    dmpts=$(ls /sys/block/*/queue/read_ahead_kb | grep -e dm)
     for dm in $dmpts; do
         echo 512 > $dm
     done
