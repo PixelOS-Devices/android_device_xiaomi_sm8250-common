@@ -18,13 +18,16 @@
 package org.lineageos.settings;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.display.ColorService;
+import org.lineageos.settings.display.DisplaySettingsActivity;
 import org.lineageos.settings.display.DisplayUtils;
 import org.lineageos.settings.vpp.VppUtils;
 import android.content.SharedPreferences;
@@ -42,6 +45,17 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         ThermalUtils.startService(context);
         ColorService.startService(context);
         VppUtils.startService(context);
+
+        // Advanced Display Settings activity component enablement
+        boolean hasAnyDisplayFeature = DisplaySettingsActivity.isSupported(context);
+
+        PackageManager pm = context.getPackageManager();
+        ComponentName displaySettingsComponent = new ComponentName(context, DisplaySettingsActivity.class);
+        pm.setComponentEnabledSetting(
+                displaySettingsComponent,
+                hasAnyDisplayFeature ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                                     : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
 
         // DC Dimming
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
