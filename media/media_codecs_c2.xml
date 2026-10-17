@@ -252,11 +252,12 @@
             <Tuning name="vq-target-bpp-540p" value="5.30" />
             <Tuning name="vq-target-bpp-480p" value="6.00" />
             <Limit name="concurrent-instances" max="16" />
+            <Limit name="quality" range="0-100" default="80" />
             <Limit name="performance-point-4096x2304" value="30" />
             <Limit name="performance-point-3840x2160" value="60" />
             <Limit name="performance-point-1920x1080" value="240" />
             <Limit name="performance-point-1280x720" value="480" />
-            <Feature name="bitrate-modes" value="VBR,CBR" />
+            <Feature name="bitrate-modes" value="VBR,CBR,CQ" />
             <!-- Video Quality control -->
                     <!-- QP supported using vendor extensions -->
             <Feature name="qp-bounds" />
