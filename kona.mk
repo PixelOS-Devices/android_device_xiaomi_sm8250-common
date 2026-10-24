@@ -151,7 +151,16 @@ endif
 
 # Device-specific settings
 PRODUCT_PACKAGES += \
-    XiaomiParts
+    XiaomiParts \
+    DolbyAtmos
+
+# Dolby
+PRODUCT_PACKAGES += \
+    libstagefright_foundation-v33 \
+    libstagefright_omx.vendor \
+    libstagefright_softomx.vendor \
+    libstagefright_softomx_plugin.vendor \
+    media_codecs_dolby_audio.xml
 
 # Display
 PRODUCT_PACKAGES += \

@@ -46,6 +46,14 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('getdents64: 1\n', ''),
     'vendor/etc/configstore/vpp.configstore.xml': blob_fixup()
         .regex_replace(r'(<capability key="enable" value=)"false"/>', r'\g<1>"true"/>'),
+    (
+        'vendor/lib/libstagefright_soft_ddpdec.so',
+        'vendor/lib/libstagefrightdolby.so',
+        'vendor/lib64/libdlbdsservice.so',
+        'vendor/lib64/libstagefright_soft_ddpdec.so',
+        'vendor/lib64/libstagefrightdolby.so',
+    ): blob_fixup()
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
 }  # fmt: skip
 
 

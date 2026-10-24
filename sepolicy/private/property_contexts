@@ -17,3 +17,9 @@ settingsdebug.instant.packages u:object_r:settingslib_prop:s0
 debug.media.vpp.          u:object_r:vpp_prop:s0
 debug.media.video.frc     u:object_r:vpp_prop:s0
 debug.media.video.vpp     u:object_r:vpp_prop:s0
+
+# Dolby
+ro.vendor.dolby.dax.version                                                                         u:object_r:exported_system_prop:s0
+ro.vendor.audio.dolby.dax.version                                                                   u:object_r:exported_system_prop:s0
+ro.vendor.audio.dolby.dax.support                                                                   u:object_r:exported_system_prop:s0
+ro.vendor.audio.dolby.dap.control                                                                   u:object_r:exported_system_prop:s0
